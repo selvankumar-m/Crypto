@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"
+   
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<style>
+body {
+        margin:0;
+        padding:0;
+        font-family: sans-serif;
+        background: linear-gradient( #32a6cd, #6fc1dc,#d6edf5);
+    }
+    label,h5,h6{
+        color: white;
+    }
+</style>
+
+  <div class= "ml-container">
+      <h1>Cryptocurrency Price Prediction</h1>
+      
+      <center>
+      <form action="{{url_for('predict')}}"method="post">
+		  <h2>Name</h2>
+          <input type="text" name="Name" placeholder="0:Bitcoin,1:BitcoinCash,2:Ethereum,3:Litecoin,4:Tether" required="required"/><br><br>
+	
+		  <h2>High</h2>
+		  <input type="text" name="High" placeholder="High" required="required"/><br><br>
+		  <h2>Low</h2>
+		  <input type="text" name="Low" placeholder="Low" required="required"/><br><br>
+		  <h2>Open<h2>
+		  <input type="text" name="Open" placeholder="Open" required="required"/><br><br>
+		  <h2>Day</h2>
+		  <input type="text" name="Day" placeholder="Day" required="required"/><br><br>
+		  <h2>Month</h2>
+          <input type="text" name="Month" placeholder="Month" required="required"/><br><br>
+		  <h2>Year</h2>
+          <input type="text" name="Year" placeholder="Year" required="required"/><br><br>
+		  
+		  
+         <input type="submit"  value="Predict"><br><br>
+       </center>
+      </form>
+      <br>
+      <br>
+      {{prediction_text}}
+  </div>
+  
+</body>
+</html>
