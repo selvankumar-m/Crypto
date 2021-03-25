@@ -1,51 +1,73 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8"
-   
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<style>
-body {
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <style>
+        html {
+            height: auto;
+        }
+    body {
         margin:0;
         padding:0;
         font-family: sans-serif;
-        background: linear-gradient( #32a6cd, #6fc1dc,#d6edf5);
+        background: linear-gradient(#7a7a52, #7a7a52);
     }
     label,h5,h6{
         color: white;
-    }
-</style>
+    }   
+    </style>
 
-  <div class= "ml-container">
-      <h1>Cryptocurrency Price Prediction</h1>
-      
-      <center>
-      <form action="{{url_for('predict')}}"method="post">
-		  <h2>Name</h2>
-          <input type="text" name="Name" placeholder="0:Bitcoin,1:BitcoinCash,2:Ethereum,3:Litecoin,4:Tether" required="required"/><br><br>
+    <title>Cryptocurrency Price Prediction</title>
+  </head>
+  <body>
+    <br/>
+    <h1  style="color: blanchedalmond; text-align: center;">CRYPTOCURRENCY PRICE PREDICTION</h1>
+    <h5  style="color: blanchedalmond; text-align: center;">Machine Learning Model</h5>
+    <div class="container" style="min-width: 25%; max-width: max-content;">
+        <form action="{{ url_for('predict')}}" method="post" class="login-box" onsubmit="return validateForm()">
+            
+            <br/>
+			<h6>Cryptocurrency</h6>
+			<select class="form-select form-select-md mb-3" aria-label=".form-select-lg example" name="Name">
+                <option value="0">Bitcoin</option>
+                <option value="1">BitcoinCash</option>
+				<option value="2">Ethereum</option>
+				<option value="3">Litecoin</option>
+				<option value="4">Tether</option>
+            </select>
+            <h6>Open</h6>
+            <input type="number" class="form-control" id="Open" name="Open" required="required">  
+            <br/>
+            <h6>High</h6>
+            <input type="number" class="form-control" id="High" name="High" required="required">  
+            <br/>
+            <h6>Low</h6>
+            <input type="number" class="form-control" id="Low" name="Low" required="required">  
+            <br/>
+            <h6>Day</h6>
+            <input type="number" class="form-control" id="Day" name="Day" required="required">  
+            <br/>
+			<h6>Month</h6>
+            <input type="number" class="form-control" id="Month" name="Month" required="required">  
+            <br/>
+			<h6>Year</h6>
+            <input type="number" class="form-control" id="Year" name="Year" required="required">  
+            <br/>
+            <div style="text-align: center;" class="d-grid gap-2 d-md-block">
+              <button class="btn btn-primary"  type="submit">Predict</button>
+            </div>
+          
+            <div class="p-2 w-full text-center">
+                <h1 class="sm:text-3xl text-2xl font-large title-font mb-4 text-white-900", style="color: blanchedalmond;"></h1>
+            </div>    
+            </form>
+			{{prediction_text}}
+    </div>
 	
-		  <h2>High</h2>
-		  <input type="text" name="High" placeholder="High" required="required"/><br><br>
-		  <h2>Low</h2>
-		  <input type="text" name="Low" placeholder="Low" required="required"/><br><br>
-		  <h2>Open<h2>
-		  <input type="text" name="Open" placeholder="Open" required="required"/><br><br>
-		  <h2>Day</h2>
-		  <input type="text" name="Day" placeholder="Day" required="required"/><br><br>
-		  <h2>Month</h2>
-          <input type="text" name="Month" placeholder="Month" required="required"/><br><br>
-		  <h2>Year</h2>
-          <input type="text" name="Year" placeholder="Year" required="required"/><br><br>
-		  
-		  
-         <input type="submit"  value="Predict"><br><br>
-       </center>
-      </form>
-      <br>
-      <br>
-      {{prediction_text}}
-  </div>
-  
-</body>
+  </body>
 </html>
+
